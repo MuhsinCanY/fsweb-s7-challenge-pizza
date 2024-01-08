@@ -1,0 +1,25 @@
+.pizza-container .pizza-info h2{
+    padding: 1.5rem 0;
+    font-family: 'Quattrocento', serif;
+}
+
+.pizza-info .price-rate{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem .2rem;
+}
+
+.pizza-info .price-rate p{
+    color: #5F5F5F;
+    padding: 0;
+}
+
+.pizza-info .price-rate p:first-of-type{
+    padding-left: 6rem;
+}
+
+.pizza-info p{
+    color: #5F5F5F;
+    padding: 1rem .1rem;
+}
