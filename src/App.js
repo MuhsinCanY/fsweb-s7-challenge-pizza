@@ -1,11 +1,24 @@
 import React from "react";
+import { Switch, Route } from 'react-router-dom'
+import Home from "./pages/Home";
+import OrderPizza from "./pages/OrderPizza";
+import Success from "./pages/Success";
 
 const App = () => {
   return (
     <>
-      <h1>Teknolojik Yemekler</h1>
-      <p>Burdaki kodu silip kendi headerınızı ekleyebilirsiniz</p>
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/pizza" exact>
+          <OrderPizza />
+        </Route>
+        <Route path="/s" exact>
+          <Success />
+        </Route>
+      </Switch>
     </>
-  );
+  )
 };
 export default App;
