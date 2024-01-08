@@ -1,0 +1,31 @@
+
+.success{
+    background-color: #CE2829;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.success-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: center;
+}
+
+.success-container h1{
+    color: #FFFFFF;
+    font-family: 'Satisfy', cursive;
+    font-size: 50px;
+    font-weight: 300;
+    padding-top: 7rem;
+}
+
+.success-container h2{
+    color: #FFFFFF;
+    font-family: 'Barlow', sans-serif;
+    font-size: 70px;
+    font-weight: 300;
+    padding-top: 7rem;
+}

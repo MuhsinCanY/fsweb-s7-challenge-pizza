@@ -14,7 +14,7 @@ const App = () => {
         <Route path="/pizza" exact>
           <OrderPizza />
         </Route>
-        <Route path="/s" exact>
+        <Route path="/success" exact>
           <Success />
         </Route>
       </Switch>
