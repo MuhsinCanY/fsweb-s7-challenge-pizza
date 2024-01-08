@@ -12,7 +12,6 @@ const Home = () => {
   return (
     <>
       <div className="home-container">
-        {/* <img src="../Assets/mvp-banner.png" alt='banner'></img> */}
         <h1>Teknolojik Yemekler</h1>
         <h2>KOD ACIKTIRIR</h2>
         <h2>PIZZA, DOYURUR</h2>
