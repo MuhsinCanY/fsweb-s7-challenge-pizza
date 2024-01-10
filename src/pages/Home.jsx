@@ -2,6 +2,9 @@ import React from 'react'
 import './Home.css'
 
 import { useHistory } from 'react-router-dom/'
+import HomeCategory from '../components/HomeCategory/HomeCategory'
+import HomeAdv from '../components/HomeAdv/HomeAdv'
+import Footer from '../components/Footer/Footer'
 
 const Home = () => {
   const history = useHistory()
@@ -20,6 +23,11 @@ const Home = () => {
           ACIKTIM
         </button>
       </div>
+      <HomeCategory />
+      <div className="home-main-content">
+        <HomeAdv />
+      </div>
+      <Footer/>
     </>
   )
 }
