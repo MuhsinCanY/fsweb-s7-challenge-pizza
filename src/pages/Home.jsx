@@ -16,7 +16,7 @@ const Home = () => {
         <h1>Teknolojik Yemekler</h1>
         <h2>KOD ACIKTIRIR</h2>
         <h2>PIZZA, DOYURUR</h2>
-        <button id="order-pizza" onClick={handleClick}>
+        <button data-cy="home-btn" id="order-pizza" onClick={handleClick}>
           ACIKTIM
         </button>
       </div>

@@ -3,6 +3,7 @@ import './OrderPizza.css'
 import PizzaTitle from '../components/PizzaTitle/PizzaTitle.jsx'
 import PizzaInfo from '../components/PizzaInfo/PizzaInfo.jsx'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import axios from 'axios'
 
 const materials = [
   'Pepperoni',
@@ -29,42 +30,56 @@ const initialValues = {
   count: 1,
 }
 
+const initialErrors = {
+  name: true,
+  material: true,
+  size: false,
+  paste: false,
+}
+
 const OrderPizza = () => {
   const history = useHistory()
 
   const [formData, setFormData] = useState(initialValues)
   const [count, setCount] = useState(1)
+  const [errors, setErrors] = useState(initialErrors)
+  const [isValid, setIsValid] = useState(false)
+
   const totalPrice = formData.material.length * 5 + count * 85.5
 
   const handleCountChange = (e) => {
     const { name } = e.target
     e.preventDefault()
-    console.log(e.target)
     if (name === 'plus') {
       setCount(count + 1)
-      setFormData({ ...formData, 'count': count + 1 })
+      setFormData({ ...formData, count: count + 1 })
     } else {
       if (count > 1) {
         setCount(count - 1)
-        setFormData({ ...formData, 'count': count + 1 })
+        setFormData({ ...formData, count: count + 1 })
       }
     }
   }
 
-  useEffect(() => {}, [count])
+  useEffect(() => {
+    if (!errors.name && !errors.material && errors.paste && errors.size) {
+      setIsValid(true)
+    } else {
+      setIsValid(false)
+    }
+  }, [formData])
 
   const handleChange = (e) => {
     let { name, value, checked } = e.target
-    console.log(value)
-    console.log(name)
-    console.log(formData)
 
     if (name === 'size') {
       setFormData({ ...formData, [name]: value })
+      setErrors({ ...errors, [name]: true })
     }
 
     if (name === 'paste') {
       setFormData({ ...formData, [name]: value })
+      setErrors({ ...errors, [name]: true })
     }
 
     if (name === 'material') {
@@ -77,10 +92,22 @@ const OrderPizza = () => {
       }
 
       setFormData({ ...newObj })
+      if (newObj.material.length < 4 || newObj.material.length > 10) {
+        setErrors({ ...errors, [name]: true })
+        console.log(errors)
+      } else {
+        setErrors({ ...errors, [name]: false })
+        console.log('1else', errors)
+      }
     }
 
     if (name === 'name') {
       setFormData({ ...formData, [name]: value })
+      if (value.length < 2) {
+        setErrors({ ...errors, [name]: true })
+      } else {
+        setErrors({ ...errors, [name]: false })
+      }
     }
 
     if (name === 'note') {
@@ -90,6 +117,14 @@ const OrderPizza = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    axios
+      .post('https://reqres.in/api/users',formData)
+      .then(function (response) {
+        console.log(response.data)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
     history.push('/success')
   }
 
@@ -100,7 +135,7 @@ const OrderPizza = () => {
         <div className="pizza-content">
           <PizzaInfo />
           <form id="pizza-form" onSubmit={handleSubmit}>
-            <div className="pizza-size-paste">
+            <section className="pizza-size-paste">
               <div className="pizza-size">
                 <h4>
                   Boyut Seç<span className="require"> *</span>
@@ -137,6 +172,9 @@ const OrderPizza = () => {
                     {'  '}Büyük
                   </label>
                 </div>
+                {!errors.size && (
+                  <p className="formFeedback">Bu alan zorunludur.</p>
+                )}
               </div>
               <div className="pizza-paste">
                 <h4>
@@ -154,11 +192,17 @@ const OrderPizza = () => {
                   <option value="Normal">Normal</option>
                   <option value="Kalın">Kalın</option>
                 </select>
+                {
+                  <p className="formFeedback" hidden={errors.paste}>
+                    Bu alan zorunludur.
+                  </p>
+                }
               </div>
-            </div>
-            <div className="pizza-extra-material">
+            </section>
+            <section className="pizza-extra-material">
               <h3>Ek Malzemeler</h3>
               <p>En fazla 10 malzeme saçiniz. 5₺</p>
+
               <div className="pizza-material-checkboxs">
                 {materials.map((m) => {
                   return (
@@ -172,6 +216,7 @@ const OrderPizza = () => {
                           type="checkbox"
                           name="material"
                           value={m}
+                          data-cy={m}
                           onClick={handleChange}
                         />{' '}
                         {m}
@@ -180,17 +225,27 @@ const OrderPizza = () => {
                   )
                 })}
               </div>
-            </div>
-            <br></br>
-            <h3 id="name-input-label">İsim</h3>
-            <input
-              type="textarea"
-              name="name"
-              id="name-input"
-              placeholder="Adınız..."
-              onChange={handleChange}
-            />
-            <div className="pizza-order-note">
+              {errors.material && (
+                <p className="formFeedback">
+                  En az 4, en fazla 10 malzeme seçebilirsin.
+                </p>
+              )}
+              <br></br>
+            </section>
+            <section className="pizza-user-name">
+              <h3 id="name-input-label">İsim</h3>
+              <input
+                type="textarea"
+                name="name"
+                id="name-input"
+                placeholder="Adınız..."
+                onChange={handleChange}
+              />
+              {errors.name && (
+                <p className="formFeedback">İsim en az 2 karakter olmalıdır</p>
+              )}
+            </section>
+            <section className="pizza-order-note">
               <h3>Sipariş Notu</h3>
               <input
                 type="textarea"
@@ -198,10 +253,10 @@ const OrderPizza = () => {
                 placeholder="Siparişinize eklemek istediğiniz bir not varmı?"
                 onChange={handleChange}
               />
-            </div>
+            </section>
             <div className="divider"></div>
             <hr></hr>
-            <div className="pizza-order">
+            <section className="pizza-order">
               <div className="pizza-order-quantity">
                 <button name="minus" onClick={handleCountChange}>
                   -
@@ -227,11 +282,12 @@ const OrderPizza = () => {
                   type="submit"
                   className="pizza-order-button"
                   id="order-button"
+                  disabled={!isValid}
                 >
                   SİPARİŞ VER
                 </button>
               </div>
-            </div>
+            </section>
           </form>
         </div>
       </div>

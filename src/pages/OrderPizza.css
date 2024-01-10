@@ -1,3 +1,10 @@
+.formFeedback{
+    color: #CE2829;
+    font-family: 'Barlow', sans-serif;
+    padding: 0 0 0 0;
+    margin-bottom: 0;
+}
+
 .pizza-container{
     display: flex;
     justify-content: center;

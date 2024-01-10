@@ -17,6 +17,9 @@ const App = () => {
         <Route path="/success" exact>
           <Success />
         </Route>
+        <Route path="*" exact>
+          <Home />
+        </Route>
       </Switch>
     </>
   )
