@@ -138,31 +138,34 @@ const PizzaForm = () => {
               <input
                 type="radio"
                 name="size"
+                isim="S"
                 id="size-radio"
                 value="Küçük"
                 onChange={handleChange}
               />{' '}
-              Küçük
+              {/* Küçük */}
             </label>
             <label>
               <input
                 type="radio"
                 name="size"
+                isim="M"
                 id="size-radio"
                 value="Orta"
                 onChange={handleChange}
               />
-              {'  '}Orta
+              {/* {'  '}Orta */}
             </label>
             <label>
               <input
                 type="radio"
                 name="size"
+                isim="L"
                 id="size-radio"
                 value="Büyük"
                 onChange={handleChange}
               />
-              {'  '}Büyük
+              {/* {'  '}Büyük */}
             </label>
           </div>
           {!errors.size && <p className="formFeedback">Bu alan zorunludur.</p>}
