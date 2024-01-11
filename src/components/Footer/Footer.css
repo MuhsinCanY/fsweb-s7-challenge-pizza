@@ -7,6 +7,7 @@
 
 .footer-content {
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   width: 900px;
   padding-top: 2rem;
@@ -43,6 +44,7 @@
 
 .footer-menu {
   flex: 1;
+  flex-basis: 235px;
   padding: 1rem;
   padding-top: 2rem;
 }
@@ -63,9 +65,10 @@
 
 .footer-galery {
   flex: 1;
-  padding: 1rem 0;
-  padding-top: 2rem;
-  margin-left: 6.2rem;
+  flex-basis: 200px;
+  padding: 2rem 1rem;
+  /* margin-left: 6.2rem; */
+  margin-left: auto;
 }
 
 .footer-galery h4 {
@@ -97,6 +100,6 @@
   padding: 1.5rem 1rem;
 }
 
-.footer-divider{
-    border-top: #525252 1px solid;
+.footer-divider {
+  border-top: #525252 1px solid;
 }

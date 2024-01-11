@@ -1,0 +1,84 @@
+.home-main-categorys .category-icon {
+  background-color: white;
+  border-radius: 29px;
+  padding: 0.5rem 1.5rem;
+}
+
+.home-main-categorys .categorys {
+  gap: 1rem;
+}
+
+.home-main-container {
+  display: flex;
+  justify-content: center;
+}
+
+.home-main-container .home-main-comp-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.home-main-comp-content h4 {
+  font-family: 'Satisfy', cursive;
+  font-weight: 400;
+  font-size: 22px;
+  color: #ce2829;
+  text-align: center;
+}
+
+.home-main-comp-content h2 {
+  font-family: 'Barlow', cursive;
+  font-weight: 600;
+  font-size: 30px;
+  color: #292929;
+  text-align: center;
+}
+
+.home-main-foods {
+  display: flex;
+  gap: 1rem;
+  margin: .5rem;
+}
+
+.home-main-food {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+.home-main-food h6 {
+  font-family: 'Barlow', cursive;
+  font-weight: 600;
+  color: #292929;
+  font-size: 18px;
+}
+
+.food-info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-main-food img{
+    margin: 0 auto;
+    width: 95%;
+    aspect-ratio: 1;
+}
+
+.food-info p {
+  font-family: 'Barlow', cursive;
+  font-weight: 600;
+  font-size: 14px;
+  color: #1B1B1BB2;
+}
+
+.food-info h5 {
+  font-family: 'Barlow', cursive;
+  font-weight: 700;
+  font-size: 15px;
+  color: #292929;
+}

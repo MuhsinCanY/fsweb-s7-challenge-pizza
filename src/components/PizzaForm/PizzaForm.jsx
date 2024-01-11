@@ -118,11 +118,12 @@ const PizzaForm = () => {
       .post('https://reqres.in/api/users', formData)
       .then(function (response) {
         console.log(response.data)
+        history.push('/success')
       })
       .catch(function (error) {
         console.log(error)
       })
-    history.push('/success')
+    
   }
 
   return (

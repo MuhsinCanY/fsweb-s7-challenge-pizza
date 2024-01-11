@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom/'
 import HomeCategory from '../components/HomeCategory/HomeCategory'
 import HomeAdv from '../components/HomeAdv/HomeAdv'
 import Footer from '../components/Footer/Footer'
+import HomeMain from '../components/HomeMain/HomeMain'
 
 const Home = () => {
   const history = useHistory()
@@ -26,8 +27,9 @@ const Home = () => {
       <HomeCategory />
       <div className="home-main-content">
         <HomeAdv />
+        <HomeMain />
       </div>
-      <Footer/>
+      <Footer />
     </>
   )
 }
