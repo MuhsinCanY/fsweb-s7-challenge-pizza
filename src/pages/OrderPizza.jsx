@@ -3,6 +3,7 @@ import './OrderPizza.css'
 import PizzaTitle from '../components/PizzaTitle/PizzaTitle.jsx'
 import PizzaInfo from '../components/PizzaInfo/PizzaInfo.jsx'
 import PizzaForm from '../components/PizzaForm/PizzaForm'
+import Footer from '../components/Footer/Footer'
 
 
 const OrderPizza = () => {
@@ -16,6 +17,7 @@ const OrderPizza = () => {
           <PizzaForm />
         </div>
       </div>
+      <Footer />
     </>
   )
 }
