@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import Home from "./pages/Home";
-import OrderPizza from "./pages/OrderPizza";
-import Success from "./pages/Success";
+import Home from './pages/Home'
+import OrderPizza from './pages/OrderPizza'
+import Success from './pages/Success'
 
 const App = () => {
   return (
@@ -23,5 +23,5 @@ const App = () => {
       </Switch>
     </>
   )
-};
-export default App;
+}
+export default App
